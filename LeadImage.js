@@ -1,1 +1,83 @@
-import{j as e,r as t,g as d,B as i}from"./index.js";const a="_container_1vmkg_1",l="_line_1vmkg_27";function s(){return e.jsx("div",{className:a,children:Array.from({length:10}).map((t,d)=>e.jsx("div",{className:l},d))})}const g=t.memo(({lead:a,data:l})=>{const{theme:g,state:{leadImages:r},dispatch:c}=l,[n,o]=t.useState(!1),w=t.useCallback(async()=>{try{o(!0);if(!0){const e=await d(`${i}/leads/${a.id}/image`);o(!1),c({type:"leadImages",payload:{[a.id]:e}})}}catch(e){o(!1)}},[a?.id]);return t.useEffect(()=>{r[a?.id]||w().then(()=>{})},[]),e.jsxs("a",{className:"widget-flex widget-cursor-pointer widget-flex-col widget-gap-1 widget-rounded-lg widget-border widget-border-gray-300 widget-p-3.5 widget-px-3 widget-text-left widget-no-underline",style:{borderColor:""+("light"===g?"#ebebeb":"#505050"),backgroundColor:""+("light"===g?"#fff":"#303030")},href:a?.url,target:"_blank",children:[e.jsx("div",{className:"widget-rounded-lg",children:n?e.jsx("div",{className:"widget-flex widget-aspect-[16/7] widget-w-full widget-items-center widget-justify-center widget-rounded-xl widget-bg-gray-200",children:e.jsx(s,{})}):e.jsx("div",{className:"widget-flex widget-aspect-video widget-w-full widget-justify-center widget-rounded-xl widget-bg-black",children:e.jsx("img",{loading:"eager",src:r[a?.id],alt:"lead picture",className:"widget-h-full widget-object-contain"})})}),e.jsx("p",{className:"widget-text-xs widget-text-[#7E7E7E]",style:{color:""+("light"===l.theme?"#7E7E7E":"#D4D4D4")},children:"Recommended for you"}),e.jsx("h1",{className:"widget-break-all widget-text-sm widget-font-medium widget-text-[#0769e2]",children:a.title})]},a?.id)});export{g as default};
+import { j as e, r as t, g as d, B as i } from "./index.js";
+const a = "_container_1vmkg_1",
+  l = "_line_1vmkg_27";
+function s() {
+  return e.jsx("div", {
+    className: a,
+    children: Array.from({ length: 10 }).map((t, d) =>
+      e.jsx("div", { className: l }, d)
+    ),
+  });
+}
+const g = t.memo(({ lead: a, data: l }) => {
+  const {
+      theme: g,
+      state: { leadImages: r },
+      dispatch: c,
+    } = l,
+    [n, o] = t.useState(!1),
+    w = t.useCallback(async () => {
+      try {
+        o(!0);
+        if (!0) {
+          const e = await d(`${i}/leads/${a.id}/image`);
+          o(!1), c({ type: "leadImages", payload: { [a.id]: e } });
+        }
+      } catch (e) {
+        o(!1);
+      }
+    }, [a?.id]);
+  return (
+    t.useEffect(() => {
+      r[a?.id] || w().then(() => {});
+    }, []),
+    e.jsxs(
+      "a",
+      {
+        className:
+          "widget-flex widget-cursor-pointer widget-flex-col widget-gap-1 widget-rounded-lg widget-border widget-border-gray-300 widget-p-3.5 widget-px-3 widget-text-left widget-no-underline",
+        style: {
+          borderColor: "" + ("light" === g ? "#ebebeb" : "#505050"),
+          backgroundColor: "" + ("light" === g ? "#fff" : "#303030"),
+        },
+        href: a?.url,
+        target: "_blank",
+        children: [
+          e.jsx("div", {
+            className: "widget-rounded-lg",
+            children: n
+              ? e.jsx("div", {
+                  className:
+                    "widget-flex widget-aspect-[16/7] widget-w-full widget-items-center widget-justify-center widget-rounded-xl widget-bg-gray-200",
+                  children: e.jsx(s, {}),
+                })
+              : e.jsx("div", {
+                  className:
+                    "widget-flex widget-aspect-video widget-w-full widget-justify-center widget-rounded-xl widget-bg-black",
+                  children: e.jsx("img", {
+                    loading: "eager",
+                    src: r[a?.id],
+                    alt: "lead picture",
+                    className: "widget-h-full widget-object-contain",
+                  }),
+                }),
+          }),
+          e.jsx("p", {
+            className: "widget-text-xs widget-text-[#7E7E7E]",
+            style: {
+              color: "" + ("light" === l.theme ? "#7E7E7E" : "#D4D4D4"),
+            },
+            children: "Recommended for you",
+          }),
+          e.jsx("h1", {
+            className:
+              "widget-break-all widget-text-sm widget-font-medium widget-text-[#0769e2]",
+            children: a.title,
+          }),
+        ],
+      },
+      a?.id
+    )
+  );
+});
+export { g as default };
